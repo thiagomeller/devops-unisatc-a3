@@ -31,3 +31,9 @@ jobs:
           npx playwright test
         env:
           CI: true
+          APP_KEYS: "chaveTesteA,chaveTesteB"
+          API_TOKEN_SALT: "saltTeste"
+          ADMIN_JWT_SECRET: "segredoAdminTeste"
+          TRANSFER_TOKEN_SALT: "saltTransferTeste"
+          JWT_SECRET: "segredoJwtTeste"
+          DATABASE_CLIENT: "sqlite"
