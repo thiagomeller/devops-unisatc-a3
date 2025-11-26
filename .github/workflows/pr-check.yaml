@@ -1,0 +1,39 @@
+name: PR Check - Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Build Strapi
+        run: npm run build
+
+      - name: Start Strapi & Run Tests
+        # Inicia o Strapi em background (&) e roda os testes
+        run: |
+          npm run start &
+          npx playwright test 
+        env:
+          CI: true
+          APP_KEYS: "chaveTesteA,chaveTesteB"
+          API_TOKEN_SALT: "saltTeste"
+          ADMIN_JWT_SECRET: "segredoAdminTeste"
+          TRANSFER_TOKEN_SALT: "saltTransferTeste"
+          JWT_SECRET: "segredoJwtTeste"
+          DATABASE_CLIENT: "sqlite"

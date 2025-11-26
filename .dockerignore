@@ -1,0 +1,21 @@
+# .dockerignore
+
+# Ignora a pasta de módulos local (o container deve instalar os seus próprios)
+node_modules
+.npm
+npm-debug.log
+
+# Ignora git
+.git
+.gitignore
+
+# Ignora arquivos de teste do Playwright (A SOLUÇÃO DO SEU ERRO)
+tests
+playwright.config.ts
+test-results
+playwright-report
+
+# Ignora arquivos de ambiente local (segurança)
+.env
+build
+dist
