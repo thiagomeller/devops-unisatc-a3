@@ -28,7 +28,7 @@ jobs:
         # Inicia o Strapi em background (&) e roda os testes
         run: |
           npm run start &
-          npx playwright test
+          npx playwright test 
         env:
           CI: true
           APP_KEYS: "chaveTesteA,chaveTesteB"
