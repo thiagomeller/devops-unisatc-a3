@@ -37,7 +37,7 @@ resource "azurerm_container_group" "strapi" {
   # O bloco container TEM QUE ESTAR AQUI DENTRO
   container {
     name   = "strapi"
-    image  = "thiagomeller/strapi-a3:${var.image_tag}" # <--- TROQUE AQUI
+    image  = "thiagomeller/strapi-a3:latest"
     cpu    = "1"
     memory = "1.5"
 
