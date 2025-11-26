@@ -21,20 +21,19 @@ variable "image_tag" {
 
 # 1. Cria o Grupo de Recursos
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-strapi-a3-satc"
+  name     = "rg-strapi-a3-satc-final"
   location = "East US"
 }
 
 # 2. Cria o Grupo de Containers (ACI)
 resource "azurerm_container_group" "strapi" {
-  name                = "strapi-container"
+  name                = "strapi-container-final"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   ip_address_type     = "Public"
   dns_name_label      = "strapi-satc-a3-${random_string.suffix.result}"
   os_type             = "Linux"
 
-  # O bloco container TEM QUE ESTAR AQUI DENTRO
   container {
     name   = "strapi"
     image  = "thiagomeller/strapi-a3:latest"
